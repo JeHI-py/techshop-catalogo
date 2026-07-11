@@ -101,16 +101,25 @@ public class Program
                     stock[contadordeProductos] = stockProducto;
 
                     contadordeProductos +=1;
-
-
-
-
                     break;
 
 
 
                 case "2":
-                Console.WriteLine("qué hacer si eligió Mostrar catálogo completo");
+                if(contadordeProductos <=0)
+                    {
+                        Console.WriteLine("No hay productos registrados");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Código | Nombre | Precio | Stock");
+
+                        for(int i = 0; i<contadordeProductos; i+=1)
+                        {
+                            Console.WriteLine($"Codigo: {codigo[i]}, Nombre: {nombre[i]}, Precio: {precio[i]}, Stock: {stock[i]}");
+                        }
+                    }
+                
                 break;
 
                 case "3":
