@@ -11,8 +11,10 @@ public class Program
         int[] stock = new int[20];
 
         //Declaración de variable
-        int contadordeProductos = 0;
-        string opcionMenu;
+        int stockProducto, codigoIngresado, contadordeProductos= 0;
+        string opcionMenu, nombreIngresado;
+        double precioIngresado;
+        bool codigoExiste;
 
         //Proceso
 
@@ -36,8 +38,76 @@ public class Program
             switch (opcionMenu)
             {
                 case "1":
-                Console.WriteLine("qué hacer si eligió Registrar producto");
-                break;
+                    do
+                    {
+                    Console.WriteLine("Ingrese el nombre del producto");
+                    nombreIngresado = Console.ReadLine();
+
+                        if (string.IsNullOrEmpty(nombreIngresado))
+                        {
+                            Console.WriteLine("ERROR: El nombre no puede estar vacío");
+                        }
+                    
+                    }while(string.IsNullOrEmpty(nombreIngresado));
+
+                    do
+                    {
+                        Console.WriteLine("Ingrese el precio del producto");
+                        precioIngresado = double.Parse(Console.ReadLine());
+
+                        if (precioIngresado <=0)
+                        {
+                        Console.WriteLine("ERROR: El programa debe ser mayor a 0");
+                        }
+
+                    }while(precioIngresado <=0);
+
+                    do
+                    {
+                        Console.WriteLine("Ingrese el stock del producto");
+                        stockProducto = int.Parse(Console.ReadLine());
+
+                        if (stockProducto <0)
+                        {
+                        Console.WriteLine("ERROR: El stock no puede ser negativo"); 
+                        }
+                    }while(stockProducto <0);
+
+                    do
+                    {
+                        
+                    codigoExiste = false;
+                    Console.WriteLine("Ingrese el codigo a registrar");
+                    codigoIngresado = int.Parse(Console.ReadLine());
+
+                    for( int i = 0; i < contadordeProductos; i++)
+                    {
+                        if (codigo[i] == codigoIngresado)
+                        {
+                        codigoExiste = true;
+                        }
+                    if (codigoExiste)
+                    {
+                    Console.WriteLine("ERROR: ese codigo ya esta registrado");
+                    }
+
+                    }
+
+                    }while(codigoExiste);
+
+                    nombre[contadordeProductos] = nombreIngresado;
+                    codigo[contadordeProductos] = codigoIngresado;
+                    precio[contadordeProductos] = precioIngresado;
+                    stock[contadordeProductos] = stockProducto;
+
+                    contadordeProductos +=1;
+
+
+
+
+                    break;
+
+
 
                 case "2":
                 Console.WriteLine("qué hacer si eligió Mostrar catálogo completo");
